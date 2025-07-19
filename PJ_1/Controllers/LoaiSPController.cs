@@ -8,7 +8,9 @@ namespace PJ_1.Controllers
         DB_ThuctapContext db = new DB_ThuctapContext();
         public IActionResult Index()
         {
-            ViewBag.LoaiSP = db.TblDmLoaiSanPhams.ToList();
+            ViewBag.LoaiSP = db.TblDmLoaiSanPhams
+                .Where(x => x.LoaiSanPhamId > 1)
+                .ToList();
             return View();
         }
         public IActionResult Create(TblDmLoaiSanPham sp)
