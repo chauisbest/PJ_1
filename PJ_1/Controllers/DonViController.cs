@@ -8,7 +8,9 @@ namespace PJ_1.Controllers
         DB_ThuctapContext db = new DB_ThuctapContext();
         public IActionResult Index()
         {
-            ViewBag.DS_DonViTinh = db.TblDmDonViTinhs.ToList();
+            ViewBag.DS_DonViTinh = db.TblDmDonViTinhs
+                .Where(x => x.DonViTinhId > 1)
+                .ToList();
             return View();
         }
         public IActionResult Create(TblDmDonViTinh dvt)
