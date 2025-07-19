@@ -1,0 +1,45 @@
+﻿@model TblDmDonViTinh
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quan ly Don vi tinh</h1>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label" asp-for="TenDonViTinh"></label>
+        <input asp-for="TenDonViTinh" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="GhiChu"></label>
+        <input asp-for="GhiChu" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th><label asp-for="DonViTinhId"></label></th>
+            <th><label asp-for="TenDonViTinh"></label></th>
+            <th><label asp-for="GhiChu"></label></th>
+            <th><label>Thao tac</label></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach(var x in ViewBag.DS_DonViTinh)
+            {
+                <tr>
+                    <td>@x.DonViTinhId</td>
+                    <td>@x.TenDonViTinh</td>
+                    <td>@x.GhiChu</td>
+                    <td>
+                        <a class="btn btn-warning" role="button" asp-action="Update" asp-route-id="@x.DonViTinhId">Update</a>
+                        <a class="btn btn-danger" role="button" asp-action="Delete" asp-route-id="@x.DonViTinhId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+﻿@model TblDmDonViTinh
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Update</h1>
+
+<form asp-action="Update" method="post">
+    <input asp-for="DonViTinhId" type="hidden" />
+    <div class="mb-3">
+        <label class="form-label" asp-for="TenDonViTinh"></label>
+        <input asp-for="TenDonViTinh" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="GhiChu"></label>
+        <input asp-for="GhiChu" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

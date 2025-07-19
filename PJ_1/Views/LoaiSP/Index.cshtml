@@ -1,0 +1,51 @@
+﻿@model TblDmLoaiSanPham
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Them Loai SP</h1>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label class="form-label" asp-for="MaLsp"></label>
+        <input asp-for="MaLsp" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="TenLsp"></label>
+        <input asp-for="TenLsp" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="GhiChu"></label>
+        <input asp-for="GhiChu" type="text" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th><label asp-for="LoaiSanPhamId"></label></th>
+            <th><label asp-for="MaLsp"></label></th>
+            <th><label asp-for="TenLsp"></label></th>
+            <th><label asp-for="GhiChu"></label></th>
+            <th><label>Thao tac</label></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var x in ViewBag.LoaiSP)
+            {
+                <tr>
+                    <td>@x.LoaiSanPhamId</td>
+                    <td>@x.MaLsp</td>
+                    <td>@x.TenLsp</td>
+                    <td>@x.GhiChu</td>
+                    <td>
+                        <a class="btn btn-warning" role="button" asp-action="Update" asp-route-id="@x.LoaiSanPhamId">Update</a>
+                        <a class="btn btn-danger" role="button" asp-action="Delete" asp-route-id="@x.LoaiSanPhamId">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
