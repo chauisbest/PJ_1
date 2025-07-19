@@ -31,5 +31,25 @@ namespace PJ_1.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var lsp = db.TblDmLoaiSanPhams.FirstOrDefault(x=>x.LoaiSanPhamId==id);
+            if (lsp == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                return View("UpdateLoaiSP", lsp);
+            }
+        }
+        [HttpPost]
+        public IActionResult Update (TblDmLoaiSanPham sp)
+        {
+            db.TblDmLoaiSanPhams.Update(sp);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
