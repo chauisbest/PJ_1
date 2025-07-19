@@ -1,0 +1,35 @@
+﻿@model TblDmSanPham
+@{
+    ViewData["Title"] = "IndexSP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Quan Ly San Pham</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th><label asp-for="SanPhamId"></label></th>
+            <th><label asp-for="MaSanPham"></label></th>
+            <th><label asp-for="TenSanPham"></label></th>
+            <th><label asp-for="LoaiSanPham.TenLsp"></label></th>
+            <th><label asp-for="DonViTinh.TenDonViTinh"></label></th>
+            <th><label asp-for="GhiChu"></label></th>
+            <th>Thao tacs</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach ( var x in ViewBag.SanPham)
+            {
+                <tr>
+                    <td>@x.SanPhamId</td>
+                    <td>@x.MaSanPham</td>
+                    <td>@x.TenSanPham</td>
+                    <td>@x.LoaiSanPham.TenLsp</td>
+                    <td>@x.DonViTinh.TenDonViTinh</td>
+                    <td>@x.GhiChu</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
